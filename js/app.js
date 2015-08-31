@@ -1802,58 +1802,58 @@ function init() {
     loader.addEventListener("complete", handleComplete);
     loader.addEventListener("progress", handleProgress);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_.json",
+        src: "images/canvasAnim_atlas_.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_"
     }, true);
 
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_2.json",
+        src: "images/canvasAnim_atlas_2.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_2"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_3.json",
+        src: "images/canvasAnim_atlas_3.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_3"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_4.json",
+        src: "images/canvasAnim_atlas_4.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_4"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_5.json",
+        src: "images/canvasAnim_atlas_5.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_5"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_6.json",
+        src: "images/canvasAnim_atlas_6.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_6"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_7.json",
+        src: "images/canvasAnim_atlas_7.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_7"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_8.json",
+        src: "images/canvasAnim_atlas_8.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_8"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_9.json",
+        src: "images/canvasAnim_atlas_9.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_9"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_10.json",
+        src: "images/canvasAnim_atlas_10.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_10"
     }, true);
     loader.loadFile({
-        src: devRoot+"images/canvasAnim_atlas_11.json",
+        src: "images/canvasAnim_atlas_11.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_11"
     }, true);
