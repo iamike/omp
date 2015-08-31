@@ -1794,7 +1794,7 @@ function init() {
     loader.addEventListener("complete", handleComplete);
     loader.addEventListener("progress", handleProgress);
     loader.loadFile({
-        src: "images/canvasAnim_atlas_.json",
+        src: "../images/canvasAnim_atlas_.json",
         type: "spritesheet",
         id: "canvasAnim_atlas_"
     }, true);
