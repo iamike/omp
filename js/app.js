@@ -1215,232 +1215,7 @@ var IndexLoad = BaseClass.extend({
         self._callback();
     }
 });
-/**/
-var app = {
-    isLoad: false,
-    isComplete: false,
-    _minisite: null,
-    getPanel: null,
-    currentPage: '',
-    //currentId:-1,
-    currentId: -1,
-    prevPageId: -1,
-    totalNums: 0,
-    pageArr: ['panel1', 'panel2', 'panel3', 'panel4', 'panel5', /* */ 'panel6', 'panel7', 'panel8', 'panel9', 'panel10', 'panel11' /**/ ],
-    panelFunArr: null,
-    _direction: 0,
-    _isStart: true,
-    _isMove: false,
-    _isAuto: false,
-    _backId: 0,
-    _backArr: [1, 2, 1],
-    init: function() {
 
-        // var isleft = gb.fn.getAddressParam('isleft');
-        // if (!isleft) {
-        //     SoundManage._globalSound.play();
-        // }
-
-        this.panelFunArr = [];
-        this.panelFunArr['panel1'] = PanelStage1;
-        this.panelFunArr['panel2'] = PanelStage2;
-        // this.panelFunArr['panel3'] = PanelStage3;
-        // this.panelFunArr['panel4'] = PanelStage4;
-        // this.panelFunArr['panel5'] = PanelStage5;
-        // this.panelFunArr['panel6'] = PanelStage6;
-        // this.panelFunArr['panel7'] = PanelStage7;
-        // this.panelFunArr['panel8'] = PanelStage8;
-        // this.panelFunArr['panel9'] = PanelStage9;
-        // this.panelFunArr['panel10'] = PanelStage10;
-        // this.panelFunArr['panel11'] = PanelStage11;
-
-        app.totalNums = app.pageArr.length;
-        var public = new PublicStage();
-        app.getPanel['public'] = public;
-
-
-        //setTimeout(function(){
-        // var indexload = app.getPanel['load'];
-        // indexload.askToRemove({
-        //     callback: app.loadComplete
-        // });
-
-        //},1500);
-
-        // var loaderlist = [];
-        //for(var i = 0 ; i <= 107 ; i++){
-        //    var name = '';
-        //    if(i <= 9){
-        //        name = 'images/fire/0_0000'+i+'.png';
-        //    }else if(i >= 10 && i <= 99){
-        //        name = 'images/fire/0_000'+i+'.png';
-        //    }else{
-        //        name = 'images/fire/0_00'+i+'.png';
-        //    }
-        //    loaderlist.push(name);
-        //}
-
-        //for(var i = 1 ; i <= 100 ; i++){
-        //    var name = '';
-        //    name = 'images/shaizi/'+i+'.png';
-        //    loaderlist.push(name);
-        //
-        //}
-
-        // for (var i = 1; i <= 109; i++) {
-        //     var name = '';
-        //     if (i >= 1 && i <= 9) {
-        //         name = 'images/splash/1000' + i + '.png';
-        //     } else if (i >= 10 && i <= 99) {
-        //         name = 'images/splash/100' + i + '.png';
-        //     } else if (i >= 100 && i <= 199) {
-        //         name = 'images/splash/10' + i + '.png';
-        //     }
-        //     loaderlist.push(name);
-
-        // }
-
-        // var loader = new gb.net.ImgsLoader(loaderlist);
-        // loader.sgProgress.add(function(pro_) {
-
-        // });
-        // loader.sgComplete.add(function(pro_) {
-
-        // });
-        // loader.load();
-
-
-
-
-
-        //app.nextPage();
-
-        //console.log('init::');
-    },
-    complete: function() {
-        if (app.isLoad && app.isComplete) {
-            app.init();
-        }
-    },
-    resize: function() {
-        this._minisite = $('#minisite');
-        $(window).resize(this.onResize);
-        this.onResize();
-    },
-    onResize: function() {
-        var domwidth = document.documentElement.clientWidth;
-        var domheight = document.documentElement.clientHeight;
-
-        var scale = Math.max(domwidth / 320, domheight / 504);
-        var width = 320 * scale;
-        var height = 504 * scale;
-        app._minisite.css({
-            scale: [scale, scale],
-            left: -(width - domwidth) / 2,
-            top: -(height - domheight) / 2
-        });
-
-    },
-    loadComplete: function() {
-        app.nextPage();
-        //console.log(1111);
-    },
-    nextPage: function() {
-        console.log('test');
-
-        app.prevPageId = app.currentId;
-        app.currentId++;
-
-        var len = app.pageArr.length;
-        if (app.currentId >= len) {
-            app.currentId = len - 1;
-            return;
-        }
-        app.currentPage = app.pageArr[app.currentId];
-
-
-
-        //panel.askToAdd({type:2});
-
-        //app.site.addPanel(app.pageArr[app.currentId] , {type:2});
-        app._direction = 2;
-        if (app.prevPageId != -1) {
-
-            var prevPanel = app.getPanel[app.pageArr[app.prevPageId]];
-
-
-            if (!prevPanel) {
-                app.panelCallBack();
-            } else {
-                prevPanel.askToRemove({
-                    type: 2,
-                    callBack: app.panelCallBack
-                });
-            }
-            //prevPanel.askToRemove({type:2,callBack:app.panelCallBack});
-
-        } else if (app.prevPageId == -1) {
-            app.panelCallBack();
-        }
-
-    },
-    prevPage: function() {
-        app.prevPageId = app.currentId;
-        if (app._isAuto) {
-            app.currentId = app._backArr[app._backId];
-            app._backId++;
-
-        } else {
-            app.currentId--;
-        }
-
-        if (app.currentId == -1) {
-            app.currentId = 0;
-            return;
-        }
-
-        app.currentPage = app.pageArr[app.currentId];
-        app._direction = 1;
-        //var panel = app.getPanel[ app.pageArr[app.currentId] ];
-        //if(!panel){
-        //
-        //    panel = app.panelFunArr[ app.pageArr[app.currentId] ];
-        //    app.getPanel[ app.pageArr[app.currentId] ] = panel;
-        //
-        //}
-        //
-        //panel.askToAdd({type:1});
-
-        //app.site.addPanel(app.pageArr[app.currentId] , {type:1});
-        if (app.prevPageId != -1) {
-            //app.site.removePanel(app.pageArr[app.prevPageId] , {type:1});
-
-            var prevPanel = app.getPanel[app.pageArr[app.prevPageId]];
-            prevPanel.askToRemove({
-                type: 1,
-                callBack: app.panelCallBack
-            });
-
-        }
-
-    },
-    panelCallBack: function() {
-
-        var panel = app.getPanel[app.pageArr[app.currentId]];
-
-        if (!panel) {
-
-            panel = new app.panelFunArr[app.pageArr[app.currentId]];
-            app.getPanel[app.pageArr[app.currentId]] = panel;
-
-        }
-        console.log('app._direction=>', app._direction, 'panel=>', panel, 'app.currentId=>', app.currentId, 'app.pageArr[app.currentId]=>', app.pageArr[app.currentId]);
-        panel.askToAdd({
-            type: app._direction
-        });
-
-    }
-};
 var PanelStage1 = BaseClass.extend({
     _panel1TxtHeng1: null,
     _panel1TxtHeng2: null,
@@ -1785,7 +1560,232 @@ var PanelStage1 = BaseClass.extend({
     }
 });
 
+/**/
+var app = {
+    isLoad: false,
+    isComplete: false,
+    _minisite: null,
+    getPanel: null,
+    currentPage: '',
+    //currentId:-1,
+    currentId: -1,
+    prevPageId: -1,
+    totalNums: 0,
+    pageArr: ['panel1', 'panel2', 'panel3', 'panel4', 'panel5', 'panel6', 'panel7', 'panel8', 'panel9', 'panel10', 'panel11' ],
+    panelFunArr: null,
+    _direction: 0,
+    _isStart: true,
+    _isMove: false,
+    _isAuto: false,
+    _backId: 0,
+    _backArr: [1, 2, 1],
+    init: function() {
 
+        // var isleft = gb.fn.getAddressParam('isleft');
+        // if (!isleft) {
+        //     SoundManage._globalSound.play();
+        // }
+
+        this.panelFunArr = [];
+        this.panelFunArr['panel1'] = PanelStage1;
+        this.panelFunArr['panel2'] = PanelStage2;
+        // this.panelFunArr['panel3'] = PanelStage3;
+        // this.panelFunArr['panel4'] = PanelStage4;
+        // this.panelFunArr['panel5'] = PanelStage5;
+        // this.panelFunArr['panel6'] = PanelStage6;
+        // this.panelFunArr['panel7'] = PanelStage7;
+        // this.panelFunArr['panel8'] = PanelStage8;
+        // this.panelFunArr['panel9'] = PanelStage9;
+        // this.panelFunArr['panel10'] = PanelStage10;
+        // this.panelFunArr['panel11'] = PanelStage11;
+
+        app.totalNums = app.pageArr.length;
+        var public = new PublicStage();
+        app.getPanel['public'] = public;
+
+
+        //setTimeout(function(){
+        // var indexload = app.getPanel['load'];
+        // indexload.askToRemove({
+        //     callback: app.loadComplete
+        // });
+
+        //},1500);
+
+        // var loaderlist = [];
+        //for(var i = 0 ; i <= 107 ; i++){
+        //    var name = '';
+        //    if(i <= 9){
+        //        name = 'images/fire/0_0000'+i+'.png';
+        //    }else if(i >= 10 && i <= 99){
+        //        name = 'images/fire/0_000'+i+'.png';
+        //    }else{
+        //        name = 'images/fire/0_00'+i+'.png';
+        //    }
+        //    loaderlist.push(name);
+        //}
+
+        //for(var i = 1 ; i <= 100 ; i++){
+        //    var name = '';
+        //    name = 'images/shaizi/'+i+'.png';
+        //    loaderlist.push(name);
+        //
+        //}
+
+        // for (var i = 1; i <= 109; i++) {
+        //     var name = '';
+        //     if (i >= 1 && i <= 9) {
+        //         name = 'images/splash/1000' + i + '.png';
+        //     } else if (i >= 10 && i <= 99) {
+        //         name = 'images/splash/100' + i + '.png';
+        //     } else if (i >= 100 && i <= 199) {
+        //         name = 'images/splash/10' + i + '.png';
+        //     }
+        //     loaderlist.push(name);
+
+        // }
+
+        // var loader = new gb.net.ImgsLoader(loaderlist);
+        // loader.sgProgress.add(function(pro_) {
+
+        // });
+        // loader.sgComplete.add(function(pro_) {
+
+        // });
+        // loader.load();
+
+
+
+
+
+        //app.nextPage();
+
+        //console.log('init::');
+    },
+    complete: function() {
+        if (app.isLoad && app.isComplete) {
+            app.init();
+        }
+    },
+    resize: function() {
+        this._minisite = $('#minisite');
+        $(window).resize(this.onResize);
+        this.onResize();
+    },
+    onResize: function() {
+        var domwidth = document.documentElement.clientWidth;
+        var domheight = document.documentElement.clientHeight;
+
+        var scale = Math.max(domwidth / 320, domheight / 504);
+        var width = 320 * scale;
+        var height = 504 * scale;
+        app._minisite.css({
+            scale: [scale, scale],
+            left: -(width - domwidth) / 2,
+            top: -(height - domheight) / 2
+        });
+
+    },
+    loadComplete: function() {
+        app.nextPage();
+        //console.log(1111);
+    },
+    nextPage: function() {
+        console.log('test');
+
+        app.prevPageId = app.currentId;
+        app.currentId++;
+
+        var len = app.pageArr.length;
+        if (app.currentId >= len) {
+            app.currentId = len - 1;
+            return;
+        }
+        app.currentPage = app.pageArr[app.currentId];
+
+
+
+        //panel.askToAdd({type:2});
+
+        //app.site.addPanel(app.pageArr[app.currentId] , {type:2});
+        app._direction = 2;
+        if (app.prevPageId != -1) {
+
+            var prevPanel = app.getPanel[app.pageArr[app.prevPageId]];
+
+
+            if (!prevPanel) {
+                app.panelCallBack();
+            } else {
+                prevPanel.askToRemove({
+                    type: 2,
+                    callBack: app.panelCallBack
+                });
+            }
+            //prevPanel.askToRemove({type:2,callBack:app.panelCallBack});
+
+        } else if (app.prevPageId == -1) {
+            app.panelCallBack();
+        }
+
+    },
+    prevPage: function() {
+        app.prevPageId = app.currentId;
+        if (app._isAuto) {
+            app.currentId = app._backArr[app._backId];
+            app._backId++;
+
+        } else {
+            app.currentId--;
+        }
+
+        if (app.currentId == -1) {
+            app.currentId = 0;
+            return;
+        }
+
+        app.currentPage = app.pageArr[app.currentId];
+        app._direction = 1;
+        //var panel = app.getPanel[ app.pageArr[app.currentId] ];
+        //if(!panel){
+        //
+        //    panel = app.panelFunArr[ app.pageArr[app.currentId] ];
+        //    app.getPanel[ app.pageArr[app.currentId] ] = panel;
+        //
+        //}
+        //
+        //panel.askToAdd({type:1});
+
+        //app.site.addPanel(app.pageArr[app.currentId] , {type:1});
+        if (app.prevPageId != -1) {
+            //app.site.removePanel(app.pageArr[app.prevPageId] , {type:1});
+
+            var prevPanel = app.getPanel[app.pageArr[app.prevPageId]];
+            prevPanel.askToRemove({
+                type: 1,
+                callBack: app.panelCallBack
+            });
+
+        }
+
+    },
+    panelCallBack: function() {
+
+        var panel = app.getPanel[app.pageArr[app.currentId]];
+
+        if (!panel) {
+
+            panel = new app.panelFunArr[app.pageArr[app.currentId]];
+            app.getPanel[app.pageArr[app.currentId]] = panel;
+
+        }
+        console.log('app._direction=>', app._direction, 'panel=>', panel, 'app.currentId=>', app.currentId, 'app.pageArr[app.currentId]=>', app.pageArr[app.currentId]);
+        panel.askToAdd({
+            type: app._direction
+        });
+
+    }
+};
 
 $(function() {
     //init the canvas animation when it ready.
