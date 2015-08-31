@@ -1452,7 +1452,7 @@ var PanelStage1 = BaseClass.extend({
     ctor: function(view_) {
         var self = this;
         self._super($('#PanelStage1'));
-
+        exportRoot.gotoAndPlay(25);
         // self._panel1TxtHeng1 = self.view.find('.panel1-txt-heng1');
         // self._panel1TxtHeng1.css({
         //     top: 46,
