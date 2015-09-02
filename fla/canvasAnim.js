@@ -4533,13 +4533,10 @@ p.nominalBounds = new cjs.Rectangle(0,-344.8,640,960.9);
 p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 
 
-(lib.MC_NIAN = function(mode,startPosition,loop) {
+(lib.movieClip78 = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// timeline functions:
-	this.frame_0 = function() {
-		app.lockedStory= true;
-	}
 	this.frame_45 = function() {
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
@@ -4549,7 +4546,6 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 		this.stop();
 	}
 	this.frame_67 = function() {
-		app.lockedStory= false;
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
 		也可用于停止/暂停影片剪辑的时间轴。
@@ -4559,7 +4555,7 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(45).call(this.frame_45).wait(22).call(this.frame_67).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).wait(45).call(this.frame_45).wait(22).call(this.frame_67).wait(1));
 
 	// 图层 9
 	this.instance = new lib.movieClip90();
@@ -4601,13 +4597,10 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 p.nominalBounds = new cjs.Rectangle(-559.6,-692.4,1015,1446.7);
 
 
-(lib.MC_HUI = function(mode,startPosition,loop) {
+(lib.movieClip67 = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// timeline functions:
-	this.frame_0 = function() {
-		app.lockedStory= true;
-	}
 	this.frame_46 = function() {
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
@@ -4617,7 +4610,6 @@ p.nominalBounds = new cjs.Rectangle(-559.6,-692.4,1015,1446.7);
 		this.stop();
 	}
 	this.frame_70 = function() {
-		app.lockedStory= false;
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
 		也可用于停止/暂停影片剪辑的时间轴。
@@ -4627,7 +4619,7 @@ p.nominalBounds = new cjs.Rectangle(-559.6,-692.4,1015,1446.7);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(46).call(this.frame_46).wait(24).call(this.frame_70).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).wait(46).call(this.frame_46).wait(24).call(this.frame_70).wait(1));
 
 	// 图层 8
 	this.instance = new lib.movieClip75();
@@ -4669,13 +4661,10 @@ p.nominalBounds = new cjs.Rectangle(-559.6,-692.4,1015,1446.7);
 p.nominalBounds = new cjs.Rectangle(-532.8,-743.8,1015,1446.7);
 
 
-(lib.MC_SI = function(mode,startPosition,loop) {
+(lib.movieClip57 = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// timeline functions:
-	this.frame_0 = function() {
-		app.lockedStory= true;
-	}
 	this.frame_64 = function() {
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
@@ -4685,7 +4674,6 @@ p.nominalBounds = new cjs.Rectangle(-532.8,-743.8,1015,1446.7);
 		this.stop();
 	}
 	this.frame_86 = function() {
-		app.lockedStory= false;
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
 		也可用于停止/暂停影片剪辑的时间轴。
@@ -4695,7 +4683,7 @@ p.nominalBounds = new cjs.Rectangle(-532.8,-743.8,1015,1446.7);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(64).call(this.frame_64).wait(22).call(this.frame_86).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).wait(64).call(this.frame_64).wait(22).call(this.frame_86).wait(1));
 
 	// 图层 6
 	this.instance = new lib.movieClip42();
@@ -4897,21 +4885,21 @@ p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
 	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(94).to({_off:false},0).wait(7).to({alpha:0},12).to({_off:true},1).wait(1));
 
 	// 念
-	this.instance_4 = new lib.MC_NIAN();
+	this.instance_4 = new lib.movieClip78();
 	this.instance_4.setTransform(269.4,515.6,1,1,0,0,0,-59.5,56.8);
 	this.instance_4._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(77).to({_off:false},0).wait(10).to({alpha:0},12).to({_off:true},1).wait(15));
 
 	// 慧
-	this.instance_5 = new lib.MC_HUI();
+	this.instance_5 = new lib.movieClip67();
 	this.instance_5.setTransform(274.9,521.3,1,1,0,0,0,-32.7,5.4);
 	this.instance_5._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_5).wait(63).to({_off:false},0).wait(9).to({alpha:0},13).to({_off:true},1).wait(29));
 
 	// 思
-	this.instance_6 = new lib.MC_SI();
+	this.instance_6 = new lib.movieClip57();
 	this.instance_6.setTransform(281.2,515.1,1,1,0,0,0,-64.3,24.2);
 	this.instance_6._off = true;
 
