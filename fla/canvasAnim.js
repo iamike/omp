@@ -4128,9 +4128,12 @@ p.nominalBounds = new cjs.Rectangle(628.2,456.7,21.5,32.2);
 
 
 (lib.MC_ZHI = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
+	this.initialize(mode,startPosition,loop,{section2:56});
 
 	// timeline functions:
+	this.frame_0 = function() {
+		this.dispatchEvent('storystart');
+	}
 	this.frame_55 = function() {
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
@@ -4148,6 +4151,7 @@ p.nominalBounds = new cjs.Rectangle(628.2,456.7,21.5,32.2);
 		this.stop();
 	}
 	this.frame_180 = function() {
+		this.dispatchEvent('storyend');
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
 		也可用于停止/暂停影片剪辑的时间轴。
@@ -4157,7 +4161,7 @@ p.nominalBounds = new cjs.Rectangle(628.2,456.7,21.5,32.2);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(55).call(this.frame_55).wait(107).call(this.frame_162).wait(18).call(this.frame_180).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(55).call(this.frame_55).wait(107).call(this.frame_162).wait(18).call(this.frame_180).wait(1));
 
 	// 图层 10
 	this.instance = new lib.movieClip42();
@@ -4726,10 +4730,13 @@ p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
 
 
 (lib.canvasAnim = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
+	this.initialize(mode,startPosition,loop,{section1:25});
 
 	// timeline functions:
 	this.frame_0 = function() {
+		var root = this;
+		root.on('storystart',function(){ console.log('storyStart');});
+		root.on('storyend',function(){ console.log('storyend');});
 		var root = this;
 		var starCount = 8;
 		root.stars = [];
