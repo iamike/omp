@@ -3,17 +3,17 @@ var section = [{
     lableName: 'begin',
     instanceName: ''
 }, {
-    lableName: 'section1',
+    lableName: 'section1',//志
     instanceName: 'instance_7'
 }, {
-    lableName: 'section2',
-    instanceName: 'instance_7'
+    lableName: 'section2',//思
+    instanceName: 'instance_6'
 }, {
     lableName: 'section3',
-    instanceName: 'instance_7'
+    instanceName: 'instance_5'
 }, {
     lableName: 'section4',
-    instanceName: 'instance_7'
+    instanceName: 'instance_4'
 }, {
     lableName: 'section5',
     instanceName: 'instance_7'
