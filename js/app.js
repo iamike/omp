@@ -596,11 +596,11 @@ var BaseClass = gb.classes.Class.extend({
     },
     toAdd: function() {
         var self = this;
-        self.view.css('display', 'block');
+        //self.view.css('display', 'block');
     },
     toRemove: function() {
         var self = this;
-        self.view.css('display', 'none');
+        //self.view.css('display', 'none');
     },
     startAnimIn: function() {
         var self = this;
@@ -651,68 +651,6 @@ var PublicStage = gb.classes.Class.extend({
             x: 0,
             y: 0
         };
-        //$('.next-btn').bind('click',function(){
-        //    app.nextPage();
-        //    console.log('next::');
-        //});
-        //$('.prev-btn').bind('click',function(){
-        //    app.prevPage();
-        //    console.log('prev::');
-        //});
-
-        self._publicTip = $('.public-tip');
-        self._publicTip.css('opacity', 0);
-        TweenMax.to(self._publicTip, 1, {
-            repeat: -1,
-            yoyo: true,
-            css: {
-                bottom: 10
-            }
-        });
-
-        self._panelMeteor = $('.panel-meteor');
-        self._panelMeteor.css({
-            left: -93,
-            top: -74
-        });
-
-        self._whiteBgBody = $('.white-bg-body');
-        self._whiteBgBody.css({
-            top: '130%'
-        });
-        //self._whiteBgBody.css({top:'-10%'});
-
-        self._publicTip1 = $('.public-tip1');
-        self._publicTip2 = $('.public-tip2');
-
-        self._soundBody = $('.sound-body');
-        self._blackSoundBody = $('.black-sound-body');
-        self._whiteSoundBody = $('.white-sound-body');
-
-        self._explainBody = $('.explain-body');
-        //var _exisleft = true;
-        self._blackExplain = $('.black-explain');
-        self._whiteExplain = $('.white-explain');
-        self._explainBody.bind('touchend', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            if (_exisleft) {
-                SoundManage.playSound();
-                _exisleft = false;
-                $('.explain1').css('display', 'none');
-                $('.explain2').css('display', 'block');
-            } else {
-                SoundManage.stopSound();
-                _exisleft = true;
-                $('.explain1').css('display', 'block');
-                $('.explain2').css('display', 'none');
-            }
-
-        });
-
-        $('.explain-body-btn').bind('touchend', {
-            self: self
-        }, self.onExplainBodyBtn);
 
 
         $(document).bind('touchstart', {
@@ -724,48 +662,6 @@ var PublicStage = gb.classes.Class.extend({
         $(document).bind('touchend', {
             self: self
         }, self.onTouchEndEvent);
-
-
-        self._shareBody = $('.share-body');
-        self._shareBody.bind('touchstart', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            self.shareNone();
-        });
-
-        //$('.sound-btn1').bind('touchend',function(e){
-        //    e.stopPropagation();
-        //    e.preventDefault();
-        //    if(SoundManage._isSoundPlay) return;
-        //    SoundManage._globalSound.play();
-        //    $('.sound-btn1').css('display','none');
-        //    $('.sound-btn2').css('display','block');
-        //});
-        //$('.sound-btn2').bind('touchend',function(e){
-        //    e.stopPropagation();
-        //    e.preventDefault();
-        //    if(SoundManage._isSoundPlay) return;
-        //    SoundManage._globalSound.stop();
-        //    $('.sound-btn1').css('display','block');
-        //    $('.sound-btn2').css('display','none');
-        //});
-
-        $('.sound-body-btn').bind('touchend', {
-            self: self
-        }, self.onSoundBodyBtn);
-
-        $('.heng-img').bind('touchstart', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        });
-        $('.heng-img').bind('touchmove', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        });
-        $('.heng-img').bind('touchend', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        });
 
 
         if (window.orientation == undefined) {
@@ -790,7 +686,7 @@ var PublicStage = gb.classes.Class.extend({
                 self.onOrientationChange();
             }
 
-            //            alert(2222);
+            alert(2222);
         }
 
 
@@ -804,17 +700,7 @@ var PublicStage = gb.classes.Class.extend({
         self.onExplainBodyBtnEvent();
     },
     onExplainBodyBtnEvent: function() {
-        if (_exisleft) {
-            SoundManage.playSound();
-            _exisleft = false;
-            $('.explain1').css('display', 'none');
-            $('.explain2').css('display', 'block');
-        } else {
-            SoundManage.stopSound();
-            _exisleft = true;
-            $('.explain1').css('display', 'block');
-            $('.explain2').css('display', 'none');
-        }
+
     },
     onSoundBodyBtn: function(e) {
         e.stopPropagation();
@@ -823,60 +709,12 @@ var PublicStage = gb.classes.Class.extend({
         self.onSoundBodyBtnEvent();
     },
     onSoundBodyBtnEvent: function() {
-        var self = this;
-        if (self.isleftsoundbodybtn) {
-            self.isleftsoundbodybtn = false;
-            SoundManage._globalSound.stop();
-            $('.sound-btn1').css('display', 'block');
-            $('.sound-btn2').css('display', 'none');
-        } else {
-            self.isleftsoundbodybtn = true;
-            SoundManage._globalSound.play();
-            $('.sound-btn1').css('display', 'none');
-            $('.sound-btn2').css('display', 'block');
-        }
+
 
     },
     onOrientationChange: function() {
         var self = this;
-        //        alert(11111);
-        switch (window.orientation) {
-            case 0:
-                {
-                    $('.heng-img').css({
-                        display: 'none'
-                    });
-                    //alert(1111);
-                    break;
-                }
-            case -90:
-                {
-                    $('.heng-img').css({
-                        display: 'block'
-                    });
-                    //alert(-90);
-                    break;
-                }
-            case 90:
-                {
-                    $('.heng-img').css({
-                        display: 'block'
-                    });
-                    //alert(90);
-                    break;
-                }
-            case 180: //仅iPad支持
-                {
-                    $('.heng-img').css({
-                        display: 'none'
-                    });
-                    //alert(180);
-                    break;
-                }
-        }
-        $('body').scrollTop(0);
-        $('body').scrollLeft(0);
-        //        console.log(window.orientation);
+
     },
     shareBlock: function() {
         var self = this;
@@ -911,15 +749,22 @@ var PublicStage = gb.classes.Class.extend({
             return;
         }
 
-
+        console.log('0');
         if (app._isStart) {
+
+            console.log('0.1');
+
             if (point.x < self._currentPoint.x) {
+                console.log('1');
                 app.nextPage();
                 //ga('send', 'event', 'home', 'home_turn_btn');
                 app._isStart = false;
                 app._isMove = true;
             }
         } else {
+            console.log('0.2');
+
+
             if (Math.abs(self._currentPoint.y - point.y) > 100) {
                 //if(self._currentPoint.y < point.y){
                 //
@@ -936,7 +781,7 @@ var PublicStage = gb.classes.Class.extend({
                 if (self._currentPoint.y > point.y) {
 
 
-
+                    console.log('1');
                     if (app.currentId == (app.totalNums - 1)) {
                         app._isAuto = true;
                         $('.explain-body').css('display', 'none');
@@ -971,166 +816,47 @@ var PublicStage = gb.classes.Class.extend({
 
     },
     blockTip: function() {
-        var self = this;
-        TweenMax.to(self._publicTip, 0.3, {
-            alpha: 1
-        });
 
     },
     noneTip: function() {
-        var self = this;
-        TweenMax.to(self._publicTip, 0.3, {
-            alpha: 0
-        });
+
 
     },
     visibleTip: function() {
-        var self = this;
-        self._publicTip.css('display', 'none');
+
     },
     starTimer: function() {
-        var self = this;
-        self._panelMeteor.css({
-            left: -93,
-            top: 0,
-            opacity: 1
-        });
-        self._timer = setInterval(self.onTimerEvent, 7000);
+
 
     },
     stopTimer: function() {
-        var self = this;
-        clearInterval(self._timer);
-        TweenMax.to(self._panelMeteor, 0.3, {
-            opacity: 0
-        });
+
     },
     onTimerEvent: function() {
 
-        var publicpanel = app.getPanel['public'];
-        //var randomleft = 320-Math.random()*93;
-        //var randomtop = 504-Math.random()*74;
 
-        TweenMax.to(publicpanel._panelMeteor, 5, {
-            css: {
-                left: 504,
-                top: 320
-            },
-            ease: Linear.easeNone,
-            onComplete: function() {
-                publicpanel._panelMeteor.css({
-                    left: -93,
-                    top: 0
-                });
-            }
-        });
-        //TweenMax.to(publicpanel._panelMeteor,1,{
-        //    css:{
-        //        opacity:1
-        //    }
-        //});
-        //TweenMax.to(publicpanel._panelMeteor,1,{
-        //    css:{
-        //        opacity:0
-        //    },
-        //    delay:2
-        //});
     },
     bgMoveIn: function() {
-        var self = this;
-        if (!app._isAuto) {
-            //self._whiteBgBody.css({left:-1085,top:-1085});
-            TweenMax.to(self._whiteBgBody, 3, {
-                top: '-10%',
-                opacity: 1
-            });
-        }
 
 
     },
     bgMoveOut: function() {
-        var self = this;
-        if (!app._isAuto) {
-            //TweenMax.to(self._whiteBgBody,2,{width:0,height:0,left:0,top:0,opacity:0});
-            TweenMax.to(self._whiteBgBody, 3, {
-                top: '130%',
-                opacity: 1
-            });
-        }
+
     },
     bgBackMoveIn: function() {
-        var self = this;
-        if (!app._isAuto) {
-            //TweenMax.to(self._whiteBgBody, 2, {left: -1085, top: -1085});
-            TweenMax.to(self._whiteBgBody, 2, {
-                width: 600,
-                height: 600,
-                left: -300,
-                top: -300,
-                opacity: 1
-            });
-        }
+
     },
     bgBackMoveOut: function() {
-        var self = this;
-        if (!app._isAuto) {
-            //self._whiteBgBody.css({left: 320, top: 504});
-            //TweenMax.to(self._whiteBgBody, 2, {left: -355, top: -357});
-            TweenMax.to(self._whiteBgBody, 2, {
-                width: 0,
-                height: 0,
-                left: 0,
-                top: 0,
-                opacity: 0
-            });
-        }
+
     },
     blockSound: function() {
-        var self = this;
-        self._soundBody.css('display', 'block');
-        self._explainBody.css('display', 'block');
-        $('.explain-body-btn').css('display', 'block');
-        $('.sound-body-btn').css('display', 'block');
+
     },
     tabWhiteFun: function() {
-        var self = this;
-        self._publicTip1.css('display', 'none');
-        self._publicTip2.css('display', 'block');
 
-        self._blackSoundBody.css('display', 'none');
-        self._whiteSoundBody.css('display', 'block');
-
-        self._blackExplain.css('display', 'none');
-        self._whiteExplain.css('display', 'block');
-
-        $('.black-laba').css('display', 'none');
-        $('.white-laba').css('display', 'block');
-
-        $('.black-explain-rotation').css('display', 'none');
-        $('.white-explain-rotation').css('display', 'block');
-
-        $('.next-btn').css('color', '#000');
-        $('.prev-btn').css('color', '#000');
     },
     tabBlackFun: function() {
-        var self = this;
-        self._publicTip1.css('display', 'block');
-        self._publicTip2.css('display', 'none');
 
-        self._blackSoundBody.css('display', 'block');
-        self._whiteSoundBody.css('display', 'none');
-
-        self._blackExplain.css('display', 'block');
-        self._whiteExplain.css('display', 'none');
-
-        $('.black-laba').css('display', 'block');
-        $('.white-laba').css('display', 'none');
-
-        $('.black-explain-rotation').css('display', 'block');
-        $('.white-explain-rotation').css('display', 'none');
-
-        $('.next-btn').css('color', '#fff');
-        $('.prev-btn').css('color', '#fff');
     }
 });
 
@@ -1144,70 +870,19 @@ var IndexLoad = BaseClass.extend({
     _callback: null,
     ctor: function() {
         var self = this;
-        self._super($('#loadBody'));
 
-        self._loadingTxt = self.view.find('.loading-txt');
-        self._loadZhizhen = self.view.find('.load-zhizhen');
-        //TweenMax.to(self._loadZhizhen,1,{rotation:360});
-
-        //self._circle = $('#cricle').circleProgress({
-        //    circleRightColor:'#000',
-        //    circleLeftColor:'#000',
-        //    baseColor:'#000',
-        //    circleRadius:30,
-        //    maskRadius:10,
-        //    textSize:10,
-        //    textColor:'#f00',
-        //    backgroundImage:'images/load-yellow.png',
-        //    backgroundSize:'60px 60px',
-        //    max:100
-        //});
-
-        self._loadWatchMain = self.view.find('.load-watch-main');
-        self._loadTxt = self.view.find('.load-txt');
-        self._tlAnim = new TimelineLite({
-            onComplete: self.onComplete
-        });
-
-        //self._tlAnim.to(self._loadWatchMain,0.6,{scaleX:1.3,scaleY:1.3,onComplete:function(){console.log(1111);}}).to(self._tlAnim,0.6,{scaleX:0.8,scaleY:0.8,alpha:0,onComplete:function(){console.log(22222);}});
-        //self._tlAnim.append( TweenMax.to(self._loadWatchMain,0.6,{scaleX:1.1,scaleY:1.1 }) );
-        //self._tlAnim.append( TweenMax.to(self._loadTxt,0.4,{alpha:0 }) );
-        self._tlAnim.append(TweenMax.to([self._loadWatchMain, self._loadTxt], 0.6, {
-            alpha: 0
-        }));
-        self._tlAnim.pause();
-
-        //self._circle.play(5);
-        //circle.rotate(50);
 
     },
     askToAdd: function() {
         var self = this;
-        self._super();
     },
     askToRemove: function(data_) {
         var self = this;
-        //self._super();
-        self._callback = data_.callback;
-
-        self._tlAnim.play();
-
 
     },
     onProgress: function(val_) {
         var self = this;
-        self._loadingTxt.html(val_ + '%');
-        self._loadZhizhen.css('rotate', val_ / 100 * 360);
-        var len = $('.dian').length;
-        for (var i = 0; i < len; i++) {
-            if (i <= parseInt(val_ / 100 * 60)) {
-                $('.dian').eq(i).css('display', 'block');
-            } else {
-                $('.dian').eq(i).css('display', 'none');
-            }
-        }
-        //self._circle.rotate(val_);
-        //console.log('onProgress::',val_,val_/100*360,val_/100*60);
+
     },
     onComplete: function() {
         var self = app.getPanel['load'];
@@ -1226,135 +901,32 @@ var PanelStage1 = BaseClass.extend({
     _panel1Tip: null,
     _orientation: null,
     ctor: function(view_) {
-        var self = this;
-        self._super($('#PanelStage1'));
-        exportRoot.gotoAndPlay(25);
-        // self._panel1TxtHeng1 = self.view.find('.panel1-txt-heng1');
-        // self._panel1TxtHeng1.css({
-        //     top: 46,
-        //     opacity: 0
-        // });
-        // self._panel1TxtHeng2 = self.view.find('.panel1-txt-heng2');
-        // self._panel1TxtHeng2.css({
-        //     top: 46,
-        //     opacity: 0
-        // });
-        // self._panel1Txt1 = self.view.find('.panel1-txt1');
-        // self._panel1Txt1.css({
-        //     top: 50,
-        //     height: 0
-        // });
-        // self._panel1Watch = self.view.find('.panel1-watch');
-        // self._panel1Watch.css({
-        //     scale: 0.8,
-        //     opacity: 0
-        // });
-        // self._panel1Txt2 = self.view.find('.panel1-txt2');
-        // self._panel1Txt2.css({
-        //     opacity: 0,
-        //     top: 199
-        // });
-        // self._panel1Tip = self.view.find('.panel1-tip');
-        // self._panel1Tip.css({
-        //     opacity: 0,
-        //     rotate: 100
-        // });
 
-        // //self._tlAnim = new TimelineLite({onComplete:self.onAnimComplete});
-        // //
-        // //var tw1 = new TweenMax(self._panel1TxtHeng1,0.4,{css:{top:19}});
-        // //var tw2 = new TweenMax(self._panel1TxtHeng2,0.4,{css:{top:88}});
-        // //var tw3 = new TweenMax(self._panel1Txt1,0.4,{css:{top:34,height:41},delay:0.1});
-        // //var tw4 = new TweenMax(self._panel1Watch,0.6,{scaleX:1,scaleY:1,alpha:1,delay:0.3,onComplete:function(){
-        // //
-        // //    self.anim1();
-        // //
-        // //
-        // //}});
-        // //var tw5 = new TweenMax(self._panel1Txt2,0.4,{css:{top:179,alpha:1},delay:0.8});
-        // //self._tlAnim.insert(tw1);
-        // //self._tlAnim.insert(tw2);
-        // //self._tlAnim.insert(tw3);
-        // //self._tlAnim.insert(tw4);
-        // //self._tlAnim.insert(tw5);
-        // //self._tlAnim.pause();
+        exportRoot.gotoAndPlay(25);
+
 
     },
     askToAdd: function(data_) {
         var self = this;
         self._super(data_);
-        // var publicpanel = app.getPanel['public'];
-        // publicpanel.starTimer();
-        // publicpanel.blockSound();
-        // $('.explain-body').css('display', 'none');
-        // $('.explain-body-btn').css('display', 'none');
+
 
     },
     askToRemove: function(data_) {
         var self = this;
         self._super(data_);
-        // var publicpanel = app.getPanel['public'];
-        // publicpanel.stopTimer();
-        // publicpanel.noneTip();
+
     },
     startAnimIn: function() {
         var self = this;
-        console.log('startAnimIn::',self.view.attr('id'));
-
-
-        // self._orientation = 'sin';
-        // self._panel1Tip.css({
-        //     opacity: 0,
-        //     rotate: 100
-        // });
-
-        // //self._tlAnim.play();
-        // //return;
-        // TweenMax.to(self._panel1TxtHeng1, 1.4, {
-        //     css: {
-        //         top: 19,
-        //         opacity: 1
-        //     }
-        // });
-        // TweenMax.to(self._panel1TxtHeng2, 1.4, {
-        //     css: {
-        //         top: 88,
-        //         opacity: 1
-        //     }
-        // });
-        // TweenMax.to(self._panel1Txt1, 1.4, {
-        //     css: {
-        //         top: 34,
-        //         height: 41
-        //     },
-        //     delay: 0.1
-        // });
-        // TweenMax.to(self._panel1Watch, 1.6, {
-        //     scaleX: 1,
-        //     scaleY: 1,
-        //     alpha: 1,
-        //     delay: 0.3,
-        //     onComplete: function() {
-
-        //         self.anim1();
-
-
-        //     }
-        // });
-        // TweenMax.to(self._panel1Txt2, 1.4, {
-        //     css: {
-        //         top: 179,
-        //         alpha: 1
-        //     },
-        //     delay: 0.8
-        // });
+       // console.log('startAnimIn::', self.view.attr('id'));
 
 
     },
     startAnimOut: function() {
         var self = this;
         self._orientation = 'sout';
-        console.log('startAnimOut::',self.view.attr('id'));
+        //console.log('startAnimOut::', self.view.attr('id'));
         // self._panel1Tip.css({
         //     opacity: 0,
         //     rotate: 100
@@ -1363,111 +935,12 @@ var PanelStage1 = BaseClass.extend({
         app._isStart = true;
         app._isMove = false;
         console.log(app._isStart);
-        // self._panel1Tip.css({
-        //     opacity: 0,
-        //     rotate: 100
-        // });
-        // TweenMax.to(self._panel1TxtHeng1, 1.4, {
-        //     css: {
-        //         top: 19,
-        //         opacity: 1
-        //     }
-        // });
-        // TweenMax.to(self._panel1TxtHeng2, 1.4, {
-        //     css: {
-        //         top: 88,
-        //         opacity: 1
-        //     }
-        // });
-        // TweenMax.to(self._panel1Txt1, 1.4, {
-        //     css: {
-        //         top: 34,
-        //         height: 41
-        //     },
-        //     delay: 0.1
-        // });
-        // TweenMax.to(self._panel1Watch, 1.6, {
-        //     scaleX: 1,
-        //     scaleY: 1,
-        //     alpha: 1,
-        //     delay: 0.3,
-        //     onComplete: function() {
 
-        //         self.anim1();
-
-
-        //     }
-        // });
-        // TweenMax.to(self._panel1Txt2, 0.4, {
-        //     css: {
-        //         top: 179,
-        //         alpha: 1
-        //     },
-        //     delay: 0.8
-        // });
 
     },
     overAnimIn: function() {
         var self = this;
-        console.log('overAnimIn::',self.view.attr('id'));
-
-        self._orientation = 'oin';
-        TweenMax.killTweensOf(self._panel1Tip);
-        //
-        TweenMax.set($('.fenzhen'), {
-            rotation: 0
-        });
-        TweenMax.to($('.fenzhen'), 1, {
-            rotation: -360
-        });
-        TweenMax.to(self._panel1Tip, 1, {
-            alpha: 0,
-            onComplete: function() {
-
-
-                TweenMax.to(self._panel1TxtHeng1, 1.4, {
-                    css: {
-                        top: 46,
-                        opacity: 0
-                    },
-                    delay: 0.8
-                });
-                TweenMax.to(self._panel1TxtHeng2, 1.4, {
-                    css: {
-                        top: 46,
-                        opacity: 0
-                    },
-                    delay: 0.8
-                });
-                TweenMax.to(self._panel1Txt1, 1.4, {
-                    css: {
-                        top: 50,
-                        height: 0
-                    },
-                    delay: 0.3
-                });
-                TweenMax.to(self._panel1Watch, 1.6, {
-                    scaleX: 0.8,
-                    scaleY: 0.8,
-                    alpha: 0,
-                    delay: 1.1,
-                    onComplete: function() {
-                        self.overComplete();
-                    }
-                });
-                TweenMax.to(self._panel1Txt2, 1.4, {
-                    css: {
-                        top: 199,
-                        alpha: 0
-                    }
-                });
-
-                //    self._tlAnim.reverse();
-            }
-        });
-
-
-
+        //console.log('overAnimIn::', self.view.attr('id'));
 
         //self.overComplete();
     },
@@ -1477,57 +950,6 @@ var PanelStage1 = BaseClass.extend({
         //self.overComplete();
 
         self._orientation = 'oout';
-
-        TweenMax.killTweensOf(self._panel1Tip);
-
-
-
-        //
-        TweenMax.to(self._panel1Tip, 1, {
-            alpha: 0,
-            onComplete: function() {
-                //
-                //
-                TweenMax.to(self._panel1TxtHeng1, 0.4, {
-                    css: {
-                        top: 46,
-                        opacity: 0
-                    },
-                    delay: 0.8,
-                    onComplete: function() {
-                        self.overComplete();
-                    }
-                });
-                TweenMax.to(self._panel1TxtHeng2, 0.4, {
-                    css: {
-                        top: 46,
-                        opacity: 0
-                    },
-                    delay: 0.8
-                });
-                TweenMax.to(self._panel1Txt1, 0.4, {
-                    css: {
-                        top: 50,
-                        height: 0
-                    },
-                    delay: 0.3
-                });
-                TweenMax.to(self._panel1Watch, 0.6, {
-                    scaleX: 0.8,
-                    scaleY: 0.8,
-                    alpha: 0,
-                    delay: 0.1
-                });
-                TweenMax.to(self._panel1Txt2, 0.4, {
-                    css: {
-                        top: 199,
-                        alpha: 0
-                    }
-                });
-                //
-                //    self._tlAnim.reverse();
-            }
-        });
 
     },
     anim1: function() {
@@ -1559,6 +981,109 @@ var PanelStage1 = BaseClass.extend({
         app._isMove = false;
     }
 });
+var PanelStage2 = BaseClass.extend({
+    _panel2Xie1: null,
+    _panel2Xie2: null,
+    _panel2Txt1: null,
+    _panel2TxtHeng1: null,
+    _panel2TxtHeng2: null,
+    _panel2Txt2: null,
+    _panel2Watch1: null,
+    _panel2Watch2: null,
+    _panel2Watch3: null,
+    _panel2Watch4: null,
+    _panel2Watch5: null,
+    _panel2Watch6: null,
+    _panel2Watch7: null,
+    _panel2Watch8: null,
+    _panel2Watch9: null,
+    _panel2Watch10: null,
+    _panel2Watch11: null,
+    _panel2Watch12: null,
+    _panel2WatchBody: null,
+    _tlAnim: null,
+    _tlAnim2: null,
+    _startisleft: false,
+    _panel12Txt: null,
+    _panel12Heng1: null,
+    _panel12Heng2: null,
+    _panel12Watch: null,
+    _shareBtn: null,
+    ctor: function(view_) {
+        var self = this;
+        self._super($('#PanelStage2'));
+
+
+        var publicpanel = app.getPanel['public'];
+
+    },
+    askToAdd: function(data_) {
+        var self = this;
+
+        var publicpanel = app.getPanel['public'];
+        publicpanel.starTimer();
+        self._startisleft = false;
+
+        self._super(data_);
+
+    },
+    askToRemove: function(data_) {
+        var self = this;
+        self._super(data_);
+        var publicpanel = app.getPanel['public'];
+        publicpanel.stopTimer();
+        publicpanel.noneTip();
+        self._startisleft = true;
+    },
+    startAnimIn: function() {
+        var self = this;
+
+        self._tlAnim.play(0);
+        //self.endAnim();
+    },
+    startAnimOut: function() {
+        var self = this;
+
+    },
+    overAnimIn: function() {
+        var self = this;
+
+        self._tlAnim2.play(0);
+
+        //self.overComplete();
+    },
+    overAnimOut: function() {
+        var self = this;
+        self._tlAnim.reverse();
+        var publicpanel = app.getPanel['public'];
+        publicpanel.noneTip();
+        var timerssss = 3000;
+        if (app._isAuto) {
+            timerssss = 1500;
+        }
+        setTimeout(function() {
+            self.overComplete();
+
+        }, timerssss);
+    },
+    tlAnimComplete: function() {
+        var self = app.getPanel['panel2'];
+        var publicpanel = app.getPanel['public'];
+
+    },
+    tlAnimComplete2: function() {
+        var self = app.getPanel['panel2'];
+        var publicpanel = app.getPanel['public'];
+
+
+    },
+    endAnim: function() {
+        var self = this;
+
+
+        console.log('endAnim::');
+    }
+});
 
 /**/
 var app = {
@@ -1571,7 +1096,7 @@ var app = {
     currentId: -1,
     prevPageId: -1,
     totalNums: 0,
-    pageArr: ['panel1', 'panel2', 'panel3', 'panel4', 'panel5', 'panel6', 'panel7', 'panel8', 'panel9', 'panel10', 'panel11' ],
+    pageArr: ['panel1', 'panel2', 'panel3', 'panel4', 'panel5', 'panel6', 'panel7', 'panel8', 'panel9', 'panel10', 'panel11'],
     panelFunArr: null,
     _direction: 0,
     _isStart: true,
@@ -1604,61 +1129,6 @@ var app = {
         app.getPanel['public'] = public;
 
 
-        //setTimeout(function(){
-        // var indexload = app.getPanel['load'];
-        // indexload.askToRemove({
-        //     callback: app.loadComplete
-        // });
-
-        //},1500);
-
-        // var loaderlist = [];
-        //for(var i = 0 ; i <= 107 ; i++){
-        //    var name = '';
-        //    if(i <= 9){
-        //        name = 'images/fire/0_0000'+i+'.png';
-        //    }else if(i >= 10 && i <= 99){
-        //        name = 'images/fire/0_000'+i+'.png';
-        //    }else{
-        //        name = 'images/fire/0_00'+i+'.png';
-        //    }
-        //    loaderlist.push(name);
-        //}
-
-        //for(var i = 1 ; i <= 100 ; i++){
-        //    var name = '';
-        //    name = 'images/shaizi/'+i+'.png';
-        //    loaderlist.push(name);
-        //
-        //}
-
-        // for (var i = 1; i <= 109; i++) {
-        //     var name = '';
-        //     if (i >= 1 && i <= 9) {
-        //         name = 'images/splash/1000' + i + '.png';
-        //     } else if (i >= 10 && i <= 99) {
-        //         name = 'images/splash/100' + i + '.png';
-        //     } else if (i >= 100 && i <= 199) {
-        //         name = 'images/splash/10' + i + '.png';
-        //     }
-        //     loaderlist.push(name);
-
-        // }
-
-        // var loader = new gb.net.ImgsLoader(loaderlist);
-        // loader.sgProgress.add(function(pro_) {
-
-        // });
-        // loader.sgComplete.add(function(pro_) {
-
-        // });
-        // loader.load();
-
-
-
-
-
-        //app.nextPage();
 
         //console.log('init::');
     },
@@ -1703,11 +1173,6 @@ var app = {
         }
         app.currentPage = app.pageArr[app.currentId];
 
-
-
-        //panel.askToAdd({type:2});
-
-        //app.site.addPanel(app.pageArr[app.currentId] , {type:2});
         app._direction = 2;
         if (app.prevPageId != -1) {
 
@@ -1746,17 +1211,7 @@ var app = {
 
         app.currentPage = app.pageArr[app.currentId];
         app._direction = 1;
-        //var panel = app.getPanel[ app.pageArr[app.currentId] ];
-        //if(!panel){
-        //
-        //    panel = app.panelFunArr[ app.pageArr[app.currentId] ];
-        //    app.getPanel[ app.pageArr[app.currentId] ] = panel;
-        //
-        //}
-        //
-        //panel.askToAdd({type:1});
 
-        //app.site.addPanel(app.pageArr[app.currentId] , {type:1});
         if (app.prevPageId != -1) {
             //app.site.removePanel(app.pageArr[app.prevPageId] , {type:1});
 
@@ -1765,16 +1220,13 @@ var app = {
                 type: 1,
                 callBack: app.panelCallBack
             });
-
         }
-
     },
     panelCallBack: function() {
 
         var panel = app.getPanel[app.pageArr[app.currentId]];
 
         if (!panel) {
-
             panel = new app.panelFunArr[app.pageArr[app.currentId]];
             app.getPanel[app.pageArr[app.currentId]] = panel;
 
@@ -1788,6 +1240,11 @@ var app = {
 };
 
 $(function() {
+
+    //代码片段，能看懂就行
+    createjs.Touch.enable(stage, true, false);
+    //让createjs可以使用touch 
+
     //init the canvas animation when it ready.
     init();
 
@@ -1809,48 +1266,6 @@ $(function() {
         app.init();
     }
 
-    /*
-    var loaderlist = [];
-    for (var i = 0; i <= 17; i++) {
-        var name = '';
-        if (i <= 9) {
-            name = 'images/fire2/01_0000' + i + '.png';
-        } else if (i >= 10 && i <= 99) {
-            name = 'images/fire2/01_000' + i + '.png';
-        }
-        loaderlist.push(name);
-    }
 
-    var loader = new gb.net.ImgsLoader(loaderlist);
-    loader.sgProgress.add(function(pro_) {
-        indexload.onProgress(parseInt(pro_.target.progress * 100));
-        //console.log(parseInt(pro_.target.progress*50)+50);
-    });
-    loader.sgComplete.add(function(pro_) {
-        app.isComplete = true;
-        app.complete();
-        //console.log('imgcomoplete::');
-    });
-    loader.load();
-*/
-    //var _len = $('img').length;
-    //var _current = 0;
-    //var _loadingPages = $('#loadingPages');
-    //$('img').bind('load',function(e){
-    //    _current++;
-    //    indexload.onProgress(parseInt(_current/(_len-1)*50));
-    //    if(_current == (_len-1)){
-    //        $('img').unbind();
-    //
-    //        //app.isComplete = true;
-    //        //app.complete();
-    //
-    //
-    //        //console.log('allimgcomoplete::');
-    //
-    //
-    //    }
-    //    //console.log(_current);
-    //});
 
 });
