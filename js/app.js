@@ -1,10 +1,32 @@
 //app function
-var sectionLabel = ['begin', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'end'];
-
+var section = [{
+    lableName: 'begin',
+    instanceName: ''
+}, {
+    lableName: 'section1',
+    instanceName: 'instance_7'
+}, {
+    lableName: 'section2',
+    instanceName: 'instance_7'
+}, {
+    lableName: 'section3',
+    instanceName: 'instance_7'
+}, {
+    lableName: 'section4',
+    instanceName: 'instance_7'
+}, {
+    lableName: 'section5',
+    instanceName: 'instance_7'
+}, {
+    lableName: 'section6',
+    instanceName: 'instance_7'
+}, {
+    lableName: 'end',
+    instanceName: 'instance_7'
+}]
 var app = {
-    currentStoryLabelName: sectionLabel[0],
-    nextStoryLableName: sectionLabel[1],
-    prevSotryLableName: sectionLabel[-1],
+    lockedStory: false,
+    currentStoryId: 0,
     resize: function() {
         this._minisite = $('#minisite');
         $(window).resize(this.onResize);
@@ -22,42 +44,56 @@ var app = {
             left: -(width - domwidth) / 2,
             top: -(height - domheight) / 2
         });
-
     }
 
 };
 
 
 
-$(function() {
+//$(function() {
 
-    //creatjs touch event
-    createjs.Touch.enable(stage, true, false);
+//creatjs touch event
+createjs.Touch.enable(stage, true, false);
 
-    //init the canvas animation when it ready.
-    init();
+//init the canvas animation when it ready.
+init();
 
-    //make screen viewport center
-    app.resize();
-    $("#minisite").swipe({
-        //Generic swipe handler for all directions
-        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-            console.log("You swiped " + direction);
-            app.currentStoryLabelName = exportRoot.getCurrentLabel();
-            app.nextStoryLableName = sectionLabel[_.indexOf(sectionLabel, app.currentStoryLabel) + 1];
-            app.prevSotryLableName = sectionLabel[_.indexOf(sectionLabel, app.currentStoryLabel) - 1];
+//make screen viewport center
+app.resize();
 
-            console.log(app.nextStoryLableName, app.prevSotryLableName);
-            if (direction == 'up') {
-                exportRoot.gotoAndPlay(app.prevLabelName);
+
+//add swpie event
+$("#minisite").swipe({
+    //Generic swipe handler for all directions
+    swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+        console.log("You swiped " + direction);
+        //app.currentStoryId _.findIndex(exportRoot.getCurrentLabel());
+        //app.currentStoryId = _.findLastIndex(section,{'lableName':app.currentStoryLabelName});
+        //app.nextStoryLableName =  app.section[app.currentStoryId+1]['lableName'];
+        //app.prevSotryLableName = app.section[app.currentStoryId-1]['lableName'];
+
+        if (direction == 'up') {
+
+            console.log(app.currentStoryId, app.lockedStory);
+
+            if (app.lockedStory == true) {
+                var instanceName =  _.result(_.findWhere(section, { 'lableName': section[app.currentStoryId]['lableName']}),'instanceName');
+                exportRoot[instanceName].gotoAndPlay();
+            } else {
+                exportRoot.gotoAndPlay();
+                app.currentStoryId += 1;
+
             }
-            if (direction == 'down') {
-                exportRoot.gotoAndPlay(app.nextLabelName);
-            }
+        }
 
-        },
-        //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold: 0
-    });
 
+        if (direction == 'down') {
+            app.currentStoryId -= 1;
+        }
+
+    },
+    //Default is 75px, set to 0 for demo so any distance triggers swipe
+    threshold: 0
 });
+
+//});
