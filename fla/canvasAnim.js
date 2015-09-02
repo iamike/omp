@@ -3923,11 +3923,14 @@ p.nominalBounds = new cjs.Rectangle(-122,-109.8,244.1,219.7);
 p.nominalBounds = new cjs.Rectangle(-10.8,-16.1,21.5,32.2);
 
 
-(lib.movieClip11 = function(mode,startPosition,loop) {
+(lib.MC_NIAN = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// timeline functions:
-	this.frame_26 = function() {
+	this.frame_0 = function() {
+		app.lockedStory=true;
+	}
+	this.frame_45 = function() {
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
 		也可用于停止/暂停影片剪辑的时间轴。
@@ -3935,7 +3938,8 @@ p.nominalBounds = new cjs.Rectangle(-10.8,-16.1,21.5,32.2);
 		
 		this.stop();
 	}
-	this.frame_88 = function() {
+	this.frame_67 = function() {
+		app.lockedStory = false;
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
 		也可用于停止/暂停影片剪辑的时间轴。
@@ -3945,7 +3949,211 @@ p.nominalBounds = new cjs.Rectangle(-10.8,-16.1,21.5,32.2);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(26).call(this.frame_26).wait(62).call(this.frame_88).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(45).call(this.frame_45).wait(22).call(this.frame_67).wait(1));
+
+	// 图层 9
+	this.instance = new lib.movieClip90();
+	this.instance.setTransform(197.1,-321.9);
+	this.instance.alpha = 0;
+	this.instance._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(53).to({_off:false},0).to({alpha:1},14).wait(1));
+
+	// 图层 7
+	this.instance_1 = new lib.movieClip42();
+	this.instance_1.setTransform(-7.1,360.5);
+	this.instance_1.alpha = 0;
+	this.instance_1._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(53).to({_off:false},0).to({alpha:1},14).wait(1));
+
+	// 元件 77
+	this.instance_2 = new lib.movieClip77();
+	this.instance_2.setTransform(-11,283.1);
+	this.instance_2._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(45).to({_off:false},0).wait(1).to({alpha:0},13).to({_off:true},1).wait(8));
+
+	// 元件 76
+	this.instance_3 = new lib.movieClip76();
+	this.instance_3.setTransform(-11.9,-214.7);
+	this.instance_3._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(29).to({_off:false},0).wait(17).to({alpha:0},13).to({_off:true},1).wait(8));
+
+	// 元件 43
+	this.instance_4 = new lib.movieClip43("synched",0,false);
+	this.instance_4.setTransform(28.5,-66.8,0.861,0.861);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(46).to({startPosition:46},0).to({alpha:0,startPosition:59},13).to({_off:true},1).wait(8));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-559.6,-692.4,1015,1446.7);
+
+
+(lib.MC_HUI = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_0 = function() {
+		app.lockedStory= true;
+	}
+	this.frame_46 = function() {
+		/* 在此帧处停止
+		时间轴将在插入此代码的帧处停止/暂停。
+		也可用于停止/暂停影片剪辑的时间轴。
+		*/
+		
+		this.stop();
+	}
+	this.frame_70 = function() {
+		app.lockedStory= false;
+		/* 在此帧处停止
+		时间轴将在插入此代码的帧处停止/暂停。
+		也可用于停止/暂停影片剪辑的时间轴。
+		*/
+		
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(46).call(this.frame_46).wait(24).call(this.frame_70).wait(1));
+
+	// 图层 8
+	this.instance = new lib.movieClip75();
+	this.instance.setTransform(205,-371.3);
+	this.instance.alpha = 0;
+	this.instance._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(56).to({_off:false},0).to({alpha:1},14).wait(1));
+
+	// 图层 7
+	this.instance_1 = new lib.movieClip42();
+	this.instance_1.setTransform(12.9,312.5);
+	this.instance_1.alpha = 0;
+	this.instance_1._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(56).to({_off:false},0).to({alpha:1},14).wait(1));
+
+	// 图层 1
+	this.instance_2 = new lib.movieClip68();
+	this.instance_2.setTransform(22.4,232.3);
+	this.instance_2._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(46).to({_off:false},0).wait(1).to({alpha:0},15).to({_off:true},1).wait(8));
+
+	// 元件 59
+	this.instance_3 = new lib.movieClip59();
+	this.instance_3.setTransform(8.5,-282);
+	this.instance_3._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(29).to({_off:false},0).wait(18).to({alpha:0},15).to({_off:true},1).wait(8));
+
+	// 元件 43
+	this.instance_4 = new lib.movieClip43("synched",0,false);
+	this.instance_4.setTransform(55.3,-118.2,0.861,0.861);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(47).to({startPosition:47},0).to({alpha:0,startPosition:62},15).to({_off:true},1).wait(8));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-532.8,-743.8,1015,1446.7);
+
+
+(lib.MC_SI = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_0 = function() {
+		app.lockedStory = true;
+	}
+	this.frame_64 = function() {
+		/* 在此帧处停止
+		时间轴将在插入此代码的帧处停止/暂停。
+		也可用于停止/暂停影片剪辑的时间轴。
+		*/
+		
+		this.stop();
+	}
+	this.frame_86 = function() {
+		app.lockedStory = false;
+		/* 在此帧处停止
+		时间轴将在插入此代码的帧处停止/暂停。
+		也可用于停止/暂停影片剪辑的时间轴。
+		*/
+		
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(64).call(this.frame_64).wait(22).call(this.frame_86).wait(1));
+
+	// 图层 6
+	this.instance = new lib.movieClip42();
+	this.instance.setTransform(-28.7,285.3);
+	this.instance.alpha = 0;
+	this.instance._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(72).to({_off:false},0).to({alpha:1},14).wait(1));
+
+	// 图层 1
+	this.instance_1 = new lib.movieClip58();
+	this.instance_1.setTransform(164,-341.3);
+	this.instance_1.alpha = 0;
+	this.instance_1._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(72).to({_off:false},0).to({alpha:1},14).wait(1));
+
+	// 元件 50
+	this.instance_2 = new lib.movieClip50();
+	this.instance_2.setTransform(-19.7,256.3);
+	this.instance_2._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(48).to({_off:false},0).wait(17).to({alpha:0},14).to({_off:true},1).wait(7));
+
+	// 元件 44
+	this.instance_3 = new lib.movieClip44("synched",0,false);
+	this.instance_3.setTransform(-16.6,-231.3);
+	this.instance_3._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(28).to({_off:false},0).wait(37).to({startPosition:24},0).to({alpha:0},14).to({_off:true},1).wait(7));
+
+	// 元件 43
+	this.instance_4 = new lib.movieClip43("synched",0,false);
+	this.instance_4.setTransform(23.7,-99.4,0.861,0.861);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(65).to({startPosition:65},0).to({alpha:0,startPosition:74},14).to({_off:true},1).wait(7));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
+
+
+(lib.MC_STARBG = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// timeline functions:
+	this.frame_0 = function() {
+		app.lockedStory = true;
+	}
+	this.frame_26 = function() {
+		/* 在此帧处停止
+		时间轴将在插入此代码的帧处停止/暂停。
+		也可用于停止/暂停影片剪辑的时间轴。
+		*/
+		
+		this.stop();
+	}
+	this.frame_88 = function() {
+		app.lockedStory = false;
+		/* 在此帧处停止
+		时间轴将在插入此代码的帧处停止/暂停。
+		也可用于停止/暂停影片剪辑的时间轴。
+		*/
+		
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(26).call(this.frame_26).wait(62).call(this.frame_88).wait(1));
 
 	// 图层 5
 	this.instance = new lib.movieClip15("synched",0,false);
@@ -4533,202 +4741,7 @@ p.nominalBounds = new cjs.Rectangle(0,-344.8,640,960.9);
 p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 
 
-(lib.movieClip78 = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// timeline functions:
-	this.frame_45 = function() {
-		/* 在此帧处停止
-		时间轴将在插入此代码的帧处停止/暂停。
-		也可用于停止/暂停影片剪辑的时间轴。
-		*/
-		
-		this.stop();
-	}
-	this.frame_67 = function() {
-		/* 在此帧处停止
-		时间轴将在插入此代码的帧处停止/暂停。
-		也可用于停止/暂停影片剪辑的时间轴。
-		*/
-		
-		this.stop();
-	}
-
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(45).call(this.frame_45).wait(22).call(this.frame_67).wait(1));
-
-	// 图层 9
-	this.instance = new lib.movieClip90();
-	this.instance.setTransform(197.1,-321.9);
-	this.instance.alpha = 0;
-	this.instance._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(53).to({_off:false},0).to({alpha:1},14).wait(1));
-
-	// 图层 7
-	this.instance_1 = new lib.movieClip42();
-	this.instance_1.setTransform(-7.1,360.5);
-	this.instance_1.alpha = 0;
-	this.instance_1._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(53).to({_off:false},0).to({alpha:1},14).wait(1));
-
-	// 元件 77
-	this.instance_2 = new lib.movieClip77();
-	this.instance_2.setTransform(-11,283.1);
-	this.instance_2._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(45).to({_off:false},0).wait(1).to({alpha:0},13).to({_off:true},1).wait(8));
-
-	// 元件 76
-	this.instance_3 = new lib.movieClip76();
-	this.instance_3.setTransform(-11.9,-214.7);
-	this.instance_3._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(29).to({_off:false},0).wait(17).to({alpha:0},13).to({_off:true},1).wait(8));
-
-	// 元件 43
-	this.instance_4 = new lib.movieClip43("synched",0,false);
-	this.instance_4.setTransform(28.5,-66.8,0.861,0.861);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(46).to({startPosition:46},0).to({alpha:0,startPosition:59},13).to({_off:true},1).wait(8));
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-559.6,-692.4,1015,1446.7);
-
-
-(lib.movieClip67 = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// timeline functions:
-	this.frame_46 = function() {
-		/* 在此帧处停止
-		时间轴将在插入此代码的帧处停止/暂停。
-		也可用于停止/暂停影片剪辑的时间轴。
-		*/
-		
-		this.stop();
-	}
-	this.frame_70 = function() {
-		/* 在此帧处停止
-		时间轴将在插入此代码的帧处停止/暂停。
-		也可用于停止/暂停影片剪辑的时间轴。
-		*/
-		
-		this.stop();
-	}
-
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(46).call(this.frame_46).wait(24).call(this.frame_70).wait(1));
-
-	// 图层 8
-	this.instance = new lib.movieClip75();
-	this.instance.setTransform(205,-371.3);
-	this.instance.alpha = 0;
-	this.instance._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(56).to({_off:false},0).to({alpha:1},14).wait(1));
-
-	// 图层 7
-	this.instance_1 = new lib.movieClip42();
-	this.instance_1.setTransform(12.9,312.5);
-	this.instance_1.alpha = 0;
-	this.instance_1._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(56).to({_off:false},0).to({alpha:1},14).wait(1));
-
-	// 图层 1
-	this.instance_2 = new lib.movieClip68();
-	this.instance_2.setTransform(22.4,232.3);
-	this.instance_2._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(46).to({_off:false},0).wait(1).to({alpha:0},15).to({_off:true},1).wait(8));
-
-	// 元件 59
-	this.instance_3 = new lib.movieClip59();
-	this.instance_3.setTransform(8.5,-282);
-	this.instance_3._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(29).to({_off:false},0).wait(18).to({alpha:0},15).to({_off:true},1).wait(8));
-
-	// 元件 43
-	this.instance_4 = new lib.movieClip43("synched",0,false);
-	this.instance_4.setTransform(55.3,-118.2,0.861,0.861);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(47).to({startPosition:47},0).to({alpha:0,startPosition:62},15).to({_off:true},1).wait(8));
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-532.8,-743.8,1015,1446.7);
-
-
-(lib.movieClip57 = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// timeline functions:
-	this.frame_64 = function() {
-		/* 在此帧处停止
-		时间轴将在插入此代码的帧处停止/暂停。
-		也可用于停止/暂停影片剪辑的时间轴。
-		*/
-		
-		this.stop();
-	}
-	this.frame_86 = function() {
-		/* 在此帧处停止
-		时间轴将在插入此代码的帧处停止/暂停。
-		也可用于停止/暂停影片剪辑的时间轴。
-		*/
-		
-		this.stop();
-	}
-
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(64).call(this.frame_64).wait(22).call(this.frame_86).wait(1));
-
-	// 图层 6
-	this.instance = new lib.movieClip42();
-	this.instance.setTransform(-28.7,285.3);
-	this.instance.alpha = 0;
-	this.instance._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(72).to({_off:false},0).to({alpha:1},14).wait(1));
-
-	// 图层 1
-	this.instance_1 = new lib.movieClip58();
-	this.instance_1.setTransform(164,-341.3);
-	this.instance_1.alpha = 0;
-	this.instance_1._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(72).to({_off:false},0).to({alpha:1},14).wait(1));
-
-	// 元件 50
-	this.instance_2 = new lib.movieClip50();
-	this.instance_2.setTransform(-19.7,256.3);
-	this.instance_2._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(48).to({_off:false},0).wait(17).to({alpha:0},14).to({_off:true},1).wait(7));
-
-	// 元件 44
-	this.instance_3 = new lib.movieClip44("synched",0,false);
-	this.instance_3.setTransform(-16.6,-231.3);
-	this.instance_3._off = true;
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(28).to({_off:false},0).wait(37).to({startPosition:24},0).to({alpha:0},14).to({_off:true},1).wait(7));
-
-	// 元件 43
-	this.instance_4 = new lib.movieClip43("synched",0,false);
-	this.instance_4.setTransform(23.7,-99.4,0.861,0.861);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(65).to({startPosition:65},0).to({alpha:0,startPosition:74},14).to({_off:true},1).wait(7));
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
-
-
 // stage content:
-
-
-
 (lib.canvasAnim = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{begin:0,section1:25,section2:40,section3:56,section4:71,section5:86,section6:100,end:114});
 
@@ -4885,21 +4898,21 @@ p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
 	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(94).to({_off:false},0).wait(7).to({alpha:0},12).to({_off:true},1).wait(1));
 
 	// 念
-	this.instance_4 = new lib.movieClip78();
+	this.instance_4 = new lib.MC_NIAN();
 	this.instance_4.setTransform(269.4,515.6,1,1,0,0,0,-59.5,56.8);
 	this.instance_4._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_4).wait(77).to({_off:false},0).wait(10).to({alpha:0},12).to({_off:true},1).wait(15));
 
 	// 慧
-	this.instance_5 = new lib.movieClip67();
+	this.instance_5 = new lib.MC_HUI();
 	this.instance_5.setTransform(274.9,521.3,1,1,0,0,0,-32.7,5.4);
 	this.instance_5._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_5).wait(63).to({_off:false},0).wait(9).to({alpha:0},13).to({_off:true},1).wait(29));
 
 	// 思
-	this.instance_6 = new lib.movieClip57();
+	this.instance_6 = new lib.MC_SI();
 	this.instance_6.setTransform(281.2,515.1,1,1,0,0,0,-64.3,24.2);
 	this.instance_6._off = true;
 
@@ -4920,7 +4933,7 @@ p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
 	this.timeline.addTween(cjs.Tween.get(this.instance_8).wait(1).to({_off:false},0).to({scaleX:1,scaleY:1},14,cjs.Ease.get(1)).wait(11).to({startPosition:0},0).to({y:471,alpha:0},13).to({_off:true},1).wait(75));
 
 	// main
-	this.instance_9 = new lib.movieClip11();
+	this.instance_9 = new lib.MC_STARBG();
 	this.instance_9.setTransform(274.4,403.7,1,1,0,0,0,567.3,401.9);
 	this.instance_9._off = true;
 

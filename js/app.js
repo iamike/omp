@@ -1,28 +1,28 @@
 //app function
 var section = [{
     lableName: 'begin',
-    instanceName: ''
+    instanceName: 'instance_9'//star bg
 }, {
-    lableName: 'section1',
+    lableName: 'section1', //志
     instanceName: 'instance_7'
 }, {
-    lableName: 'section2',
-    instanceName: 'instance_7'
+    lableName: 'section2', //思
+    instanceName: 'instance_6'
 }, {
-    lableName: 'section3',
-    instanceName: 'instance_7'
+    lableName: 'section3', //慧
+    instanceName: 'instance_5'
 }, {
-    lableName: 'section4',
-    instanceName: 'instance_7'
+    lableName: 'section4', //念
+    instanceName: 'instance_4'
 }, {
     lableName: 'section5',
-    instanceName: 'instance_7'
+    instanceName: ''
 }, {
     lableName: 'section6',
-    instanceName: 'instance_7'
+    instanceName: ''
 }, {
     lableName: 'end',
-    instanceName: 'instance_7'
+    instanceName: ''
 }]
 var app = {
     lockedStory: false,
@@ -52,48 +52,62 @@ var app = {
 
 //$(function() {
 
-//creatjs touch event
-createjs.Touch.enable(stage, true, false);
+    //creatjs touch event
+    createjs.Touch.enable(stage, true, false);
 
-//init the canvas animation when it ready.
-init();
-
-//make screen viewport center
-app.resize();
+    //init the canvas animation when it ready.
+    init();
 
 
-//add swpie event
-$("#minisite").swipe({
-    //Generic swipe handler for all directions
-    swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-        console.log("You swiped " + direction);
-        //app.currentStoryId _.findIndex(exportRoot.getCurrentLabel());
-        //app.currentStoryId = _.findLastIndex(section,{'lableName':app.currentStoryLabelName});
-        //app.nextStoryLableName =  app.section[app.currentStoryId+1]['lableName'];
-        //app.prevSotryLableName = app.section[app.currentStoryId-1]['lableName'];
 
-        if (direction == 'up') {
 
-            console.log(app.currentStoryId, app.lockedStory);
+    //make screen viewport center
+    app.resize();
 
-            if (app.lockedStory == true) {
-                var instanceName =  _.result(_.findWhere(section, { 'lableName': section[app.currentStoryId]['lableName']}),'instanceName');
-                exportRoot[instanceName].gotoAndPlay();
-            } else {
-                exportRoot.gotoAndPlay();
-                app.currentStoryId += 1;
+    //add swpie event
+    $("#minisite").swipe({
+        //Generic swipe handler for all directions
+        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
 
+            if (app.currentStoryId >= 0 && app.currentStoryId <= section.length) {
+
+                if (direction == 'up') {
+
+                    if (app.lockedStory == true) {
+                        var currentId = app.currentStoryId;
+                        var currentLabelName = section[currentId]['lableName'];
+                        var instanceName = _.result(_.findWhere(section, {
+                            'lableName': currentLabelName
+                        }), 'instanceName');
+
+                        if (instanceName) {
+                            exportRoot[instanceName].gotoAndPlay();
+                        }
+                    } else {
+
+                        //if story doesn't end.
+                        if (app.currentStoryId < section.length) {
+
+                            app.currentStoryId += 1;
+                            exportRoot.gotoAndPlay();
+
+                        }
+
+                    }
+                }
+
+                //if - _ - !!! 
+
+                // if (direction == 'down') {
+                //     app.currentStoryId -= 1;
+                // }            
             }
-        }
 
 
-        if (direction == 'down') {
-            app.currentStoryId -= 1;
-        }
 
-    },
-    //Default is 75px, set to 0 for demo so any distance triggers swipe
-    threshold: 0
-});
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold: 0
+    });
 
 //});
