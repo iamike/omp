@@ -965,18 +965,6 @@ p.nominalBounds = new cjs.Rectangle(-18.1,-116,36.2,232);
 p.nominalBounds = new cjs.Rectangle(-28.2,-129.9,56.5,259.8);
 
 
-(lib.movieClip28 = function() {
-	this.initialize();
-
-	// 图层 1
-	this.instance = new lib._2_00055();
-	this.instance.setTransform(-320,-288);
-
-	this.addChild(this.instance);
-}).prototype = p = new cjs.Container();
-p.nominalBounds = new cjs.Rectangle(-320,-288,640,576);
-
-
 (lib.movieClip27 = function() {
 	this.initialize();
 
@@ -2012,6 +2000,18 @@ p.nominalBounds = new cjs.Rectangle(0,0,39.6,4.9);
 	this.addChild(this.shape_7);
 }).prototype = p = new cjs.Container();
 p.nominalBounds = new cjs.Rectangle(0,0,44.8,4.7);
+
+
+(lib.bigHEART = function() {
+	this.initialize();
+
+	// 图层 1
+	this.instance = new lib._2_00055();
+	this.instance.setTransform(-320,-288);
+
+	this.addChild(this.instance);
+}).prototype = p = new cjs.Container();
+p.nominalBounds = new cjs.Rectangle(-320,-288,640,576);
 
 
 (lib.movieClip90 = function() {
@@ -3807,7 +3807,7 @@ p.nominalBounds = new cjs.Rectangle(-695.4,-726.4,1216.5,1739.9);
 	this.instance_1 = new lib.movieClip26();
 	this.instance_1.setTransform(-106.7,2.6,0.381,0.381);
 
-	this.instance_2 = new lib.movieClip28();
+	this.instance_2 = new lib.bigHEART();
 	this.instance_2.setTransform(0,0,0.381,0.381);
 
 	this.addChild(this.instance_2,this.instance_1,this.instance);
@@ -4617,7 +4617,7 @@ p.nominalBounds = new cjs.Rectangle(628.2,456.7,21.5,32.2);
 	this.instance_56 = new lib._2_00055();
 	this.instance_56.setTransform(0,40);
 
-	this.instance_57 = new lib.movieClip28();
+	this.instance_57 = new lib.bigHEART();
 	this.instance_57.setTransform(320,328);
 	this.instance_57._off = true;
 
@@ -4758,9 +4758,10 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 		
 			star.x = Math.round(640 * (1 - Math.random()));
 			star.y = Math.round(650 * (1 - Math.random()));
-			star.xSpeed = Math.round(3 * (1 - Math.random()));
-			star.ySpeed = Math.round(3 * (1 - Math.random()));
-		
+			star.xSpeed = 3 * (1 - Math.random());
+			star.ySpeed = 3 * (1 - Math.random());
+			console.log(star.xSpeed,star.ySpeed);
+			
 			root.addChild(star);
 			root.stars.push(star);
 			root.addChild(line);
@@ -4780,16 +4781,16 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 		
 		
 				// Wall Collision 
-				if (root.stars[i].x < 0) {
+				if (root.stars[i].x <= 0) {
 					root.stars[i].xSpeed = -xSpeed;
 				}; //left
-				if ((root.stars[i].x + (30)) > 640) {
+				if ((root.stars[i].x + (30)) >= 640) {
 					root.stars[i].xSpeed = -xSpeed;
 				}; //left
-				if ((root.stars[i].y) < 0) {
+				if ((root.stars[i].y) <= 0) {
 					root.stars[i].ySpeed = -ySpeed;
 				}; //top
-				if ((root.stars[i].y + (30)) > 650) {
+				if ((root.stars[i].y + (30)) >= 650) {
 					root.stars[i].ySpeed = -ySpeed;
 				}; //bottom
 		
