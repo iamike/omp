@@ -181,7 +181,7 @@ a.red:hover{ text-decoration: underline; color:#ff5656;}
 .load-body{ position: absolute; left:0px; top:0px; z-index: 1000; width: 320px; height: 504px;}
 .load-txt{ position: absolute; left:78px; top:240px; width: 167px;}
 .load-watch-main{ position: absolute; left:106px; top:104px; width: 108px; height: 108px;}
-.load-watch{  width: 135px; position: absolute; left:93px; top:91px;}
+.load-watch{  width: 135px; position: absolute; left:160px; top:91px;}
 .loading-txt{ position: absolute; left:18px; top:40px; color:#d0b382;font-size:8px; text-align: center; width: 37px;}
 .load-zhizhen{width:108px;position: absolute; left:0px; top:0px;
     transform-origin:32% 50%;
