@@ -97,6 +97,11 @@ function handleComplete(evt) {
 
     createjs.Ticker.setFPS(lib.properties.fps);
     createjs.Ticker.addEventListener("tick", stage);
+
+
+
+    //hide progress
+    $('.load-watch-main').hide();
 }
 
 function handleProgress(evt) {
