@@ -23,7 +23,7 @@ function handleFileLoad(evt) {
 
 function handleComplete(evt) {
     var queue = evt.target;
-    ss["canvasAnim_atlas_"] = queue.getResult("canvasAnim_atlas_");
+    //ss["canvasAnim_atlas_"] = queue.getResult("canvasAnim_atlas_");
 
     exportRoot = new lib.canvasAnim();
 
