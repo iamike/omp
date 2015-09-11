@@ -1,7 +1,6 @@
 //app function
 var section = [{
-    lableName: 'begin',
-    instanceName: 'instance_9'//star bg
+    lableName: 'begin'
 }, {
     lableName: 'section1', //志
     instanceName: 'instance_7'
@@ -23,7 +22,8 @@ var section = [{
 }, {
     lableName: 'end',
     instanceName: ''
-}]
+}];
+
 var app = {
     lockedStory: false,
     currentStoryId: 0,
@@ -44,6 +44,14 @@ var app = {
             left: -(width - domwidth) / 2,
             top: -(height - domheight) / 2
         });
+    },
+    toSwipeMode: function() {
+        $('.swipeMode').show();
+        $('.tapMode').hide();
+    },
+    toTapMode: function() {
+        $('.swipeMode').hide();
+        $('.tapMode').show();
     }
 
 };
@@ -52,62 +60,99 @@ var app = {
 
 //$(function() {
 
-    //creatjs touch event
-    createjs.Touch.enable(stage, true, false);
+//creatjs touch event
+createjs.Touch.enable(stage, true, false);
 
-    //init the canvas animation when it ready.
-    init();
-
-
+//init the canvas animation when it ready.
+init();
 
 
-    //make screen viewport center
-    app.resize();
+//make screen viewport center
+app.resize();
 
-    //add swpie event
-    $("#minisite").swipe({
-        //Generic swipe handler for all directions
-        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+//add swpie event
+$("#swipeLayer").swipe({
+    //Generic swipe handler for all directions
+    swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
 
-            if (app.currentStoryId >= 0 && app.currentStoryId <= section.length) {
+        console.log(event, direction, distance, duration, fingerCount, fingerData);
 
-                if (direction == 'up') {
+        if (app.currentStoryId >= 0 && app.currentStoryId <= section.length) {
 
-                    if (app.lockedStory == true) {
-                        var currentId = app.currentStoryId;
-                        var currentLabelName = section[currentId]['lableName'];
-                        var instanceName = _.result(_.findWhere(section, {
-                            'lableName': currentLabelName
-                        }), 'instanceName');
+            if (direction == 'up') {
 
-                        if (instanceName) {
-                            exportRoot[instanceName].gotoAndPlay();
-                        }
-                    } else {
+                if (app.lockedStory == true) {
+                    var currentId = app.currentStoryId;
+                    var currentLabelName = section[currentId]['lableName'];
+                    var instanceName = _.result(_.findWhere(section, {
+                        'lableName': currentLabelName
+                    }), 'instanceName');
 
-                        //if story doesn't end.
-                        if (app.currentStoryId < section.length) {
+                    if (instanceName) {
+                        exportRoot[instanceName].gotoAndPlay();
+                    }
+                } else {
 
-                            app.currentStoryId += 1;
-                            exportRoot.gotoAndPlay();
+                    //if story doesn't end.
+                    if (app.currentStoryId < section.length) {
 
-                        }
+                        app.currentStoryId += 1;
+                        exportRoot.gotoAndPlay();
 
                     }
+
                 }
-
-                //if - _ - !!! 
-
-                // if (direction == 'down') {
-                //     app.currentStoryId -= 1;
-                // }            
             }
 
+            //if - _ - !!! 
+
+            // if (direction == 'down') {
+            //     app.currentStoryId -= 1;
+            // }            
+        }
 
 
-        },
-        //Default is 75px, set to 0 for demo so any distance triggers swipe
-        threshold: 0
-    });
+
+    },
+    //Default is 75px, set to 0 for demo so any distance triggers swipe
+    threshold: 0
+});
+
+
+//add tap event
+$("#tapLayer,#tapLayerMiddle").swipe({
+    tap: function(event, target) {
+
+        if (app.currentStoryId >= 0 && app.currentStoryId <= section.length) {
+
+            if (app.lockedStory == true) {
+                var currentId = app.currentStoryId;
+                var currentLabelName = section[currentId]['lableName'];
+                var instanceName = _.result(_.findWhere(section, {
+                    'lableName': currentLabelName
+                }), 'instanceName');
+
+                if (instanceName) {
+                    exportRoot[instanceName].gotoAndPlay();
+                }
+            } else {
+
+                //if story doesn't end.
+                if (app.currentStoryId < section.length) {
+
+                    app.currentStoryId += 1;
+                    exportRoot.gotoAndPlay();
+
+                }
+
+            }
+        }
+    }
+});
+
+
+
+
+
 
 //});

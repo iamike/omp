@@ -2748,18 +2748,6 @@ p.nominalBounds = new cjs.Rectangle(-178.7,-18.8,357.4,37.7);
 p.nominalBounds = new cjs.Rectangle(-150.7,-18.5,301.4,37);
 
 
-(lib.movieClip26 = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// 图层 1
-	this.instance = new lib.movieClip27();
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).to({x:6},14).to({x:0},15).wait(1));
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-18.7,-13.2,37.5,26.5);
-
-
 (lib.movieClip12 = function() {
 	this.initialize();
 
@@ -3064,6 +3052,18 @@ p.nominalBounds = new cjs.Rectangle(0,0,11,76.2);
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(0,-1.6,100,7.7);
+
+
+(lib.movieClip26 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// 图层 1
+	this.instance = new lib.movieClip27();
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).to({x:6},14).to({x:0},15).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-18.7,-13.2,37.5,26.5);
 
 
 (lib.movieClip94 = function(mode,startPosition,loop) {
@@ -4133,7 +4133,7 @@ p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
 
 	// timeline functions:
 	this.frame_0 = function() {
-		app.lockedStory = true;
+		//app.lockedStory = true;
 	}
 	this.frame_26 = function() {
 		/* 在此帧处停止
@@ -4144,7 +4144,7 @@ p.nominalBounds = new cjs.Rectangle(-564.4,-725,1015,1446.7);
 		this.stop();
 	}
 	this.frame_88 = function() {
-		app.lockedStory = false;
+		//app.lockedStory = false;
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
 		也可用于停止/暂停影片剪辑的时间轴。
@@ -4761,7 +4761,7 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 			star.y = Math.round(650 * (1 - Math.random()));
 			star.xSpeed = 3 * (1 - Math.random());
 			star.ySpeed = 3 * (1 - Math.random());
-			console.log(star.xSpeed,star.ySpeed);
+			//console.log(star.xSpeed,star.ySpeed);
 			
 			root.addChild(star);
 			root.stars.push(star);
@@ -4819,6 +4819,9 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 		
 		this.stop();
 	}
+	this.frame_39 = function() {
+		exportRoot.instance_9.gotoAndPlay();
+	}
 	this.frame_40 = function() {
 		/* 在此帧处停止
 		时间轴将在插入此代码的帧处停止/暂停。
@@ -4869,7 +4872,7 @@ p.nominalBounds = new cjs.Rectangle(122.3,-597.5,36.2,154.4);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(25).call(this.frame_25).wait(15).call(this.frame_40).wait(16).call(this.frame_56).wait(15).call(this.frame_71).wait(15).call(this.frame_86).wait(14).call(this.frame_100).wait(14).call(this.frame_114).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(25).call(this.frame_25).wait(14).call(this.frame_39).wait(1).call(this.frame_40).wait(16).call(this.frame_56).wait(15).call(this.frame_71).wait(15).call(this.frame_86).wait(14).call(this.frame_100).wait(14).call(this.frame_114).wait(1));
 
 	// foot
 	this.instance = new lib.Group_8();
