@@ -27,6 +27,9 @@ var section = [{
 var app = {
     lockedStory: false,
     currentStoryId: 0,
+    getRandomInt: function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
     resize: function() {
         this._minisite = $('#minisite');
         $(window).resize(this.onResize);
@@ -57,7 +60,7 @@ var app = {
         $('.swipeMode,.tapMode').hide();
         $('#tapLayerMiddle').show();
     },
-    hideAllMode:function(){
+    hideAllMode: function() {
         $('.swipeMode,.tapMode').hide();
     }
 
@@ -73,36 +76,36 @@ var app = {
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  */
- 
-(function($){
+
+(function($) {
     // Determine if we on iPhone or iPad
     var isiOS = false;
     var agent = navigator.userAgent.toLowerCase();
-    if(agent.indexOf('iphone') >= 0 || agent.indexOf('ipad') >= 0){
-           isiOS = true;
+    if (agent.indexOf('iphone') >= 0 || agent.indexOf('ipad') >= 0) {
+        isiOS = true;
     }
- 
-    $.fn.doubletap = function(onDoubleTapCallback, onTapCallback, delay){
+
+    $.fn.doubletap = function(onDoubleTapCallback, onTapCallback, delay) {
         var eventName, action;
-        delay = delay == null? 500 : delay;
-        eventName = isiOS == true? 'touchend' : 'click';
- 
-        $(this).bind(eventName, function(event){
+        delay = delay == null ? 500 : delay;
+        eventName = isiOS == true ? 'touchend' : 'click';
+
+        $(this).bind(eventName, function(event) {
             var now = new Date().getTime();
-            var lastTouch = $(this).data('lastTouch') || now + 1 /** the first time this will make delta a negative number */;
+            var lastTouch = $(this).data('lastTouch') || now + 1 /** the first time this will make delta a negative number */ ;
             var delta = now - lastTouch;
             clearTimeout(action);
-            if(delta<500 && delta>0){
-                if(onDoubleTapCallback != null && typeof onDoubleTapCallback == 'function'){
+            if (delta < 500 && delta > 0) {
+                if (onDoubleTapCallback != null && typeof onDoubleTapCallback == 'function') {
                     onDoubleTapCallback(event);
                 }
-            }else{
+            } else {
                 $(this).data('lastTouch', now);
-                action = setTimeout(function(evt){
-                    if(onTapCallback != null && typeof onTapCallback == 'function'){
+                action = setTimeout(function(evt) {
+                    if (onTapCallback != null && typeof onTapCallback == 'function') {
                         onTapCallback(evt);
                     }
-                    clearTimeout(action);   // clear the timeout
+                    clearTimeout(action); // clear the timeout
                 }, delay, [event]);
             }
             $(this).data('lastTouch', now);
@@ -133,7 +136,7 @@ $('body,canvas').swipe({
         event.preventDefault();
 
     },
-    swipe:function(event){
+    swipe: function(event) {
         event.preventDefault();
     }
 });
@@ -147,7 +150,7 @@ $("#swipeLayer").swipe({
     //Generic swipe handler for all directions
     swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
 
-        console.log(event, direction, distance, duration, fingerCount, fingerData);
+       // console.log(event, direction, distance, duration, fingerCount, fingerData);
 
         if (app.currentStoryId >= 0 && app.currentStoryId <= section.length) {
 
